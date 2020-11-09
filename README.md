@@ -185,4 +185,26 @@ export default function (props) {
       onChange={e => onImgUploadChange(e)}
       studentInfo={studentInfo}
   />
+  
+   const onImgUploadChange = async files => {
+        if (files && files.length) {
+            setValue(files);
+            const body = {
+                fileId: files[0].fileId,
+                stuId: '111'
+            };
+
+            const data = await uploadImg(body);
+
+            if (data) {
+                Toast.success('照片上传成功！', 1.5);
+            }
+        } else {
+            setValue([]);
+        }
+
+
+    };
+  
+  
 ```
